@@ -16,7 +16,7 @@ class BooleanSeries:
     def __getitem__(self, idx):
         return self._items[idx]
 
-    # Flips all boolean values 
+    # Flip all boolean values 
     def __invert__(self):
         return BooleanSeries([None if x is None else not x for x in self._items])
 
@@ -39,7 +39,7 @@ class BooleanSeries:
 # Stores a list of strings
 class StringSeries:
     def __init__(self, items: list[Union[str, None]]):
-        # Make sure everything is either a string or None
+        # Ensure everything is either a string or None
         for i in items:
             if i is not None and not isinstance(i, str):
                 raise ValueError(f"Item {i} is not a string or None.")
@@ -62,7 +62,7 @@ class StringSeries:
                 result.append(None if a is None else a == other)
         return BooleanSeries(result)
 
-    # Not equal check (pretty much the same logic)
+    # check for not equal
     def __ne__(self, other):
         result = []
         if isinstance(other, StringSeries):
@@ -77,7 +77,7 @@ class StringSeries:
         return str(self._items)
 
 
-# For integer values (works similarly to pandas Series but way simpler)
+# integer values
 class IntSeries:
     def __init__(self, items: list[Union[int, None]]):
         for i in items:
