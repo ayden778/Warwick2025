@@ -1,4 +1,4 @@
-# Task B — Stack Overflow Developer Survey 2025 Analytics#
+# Task B
 import pandas as pd
 import re
 from typing import Optional
@@ -42,7 +42,7 @@ else:
     print("(Could not find a single question-text column; here is a schema preview)")
     display(schema.head())
 
-print("\n")  # spacing
+print("\n")  # leaves space
 
 # Q2: Which age range has the most responses?
 print("Q2: Most common age bracket")
@@ -75,7 +75,7 @@ else:
     print("OrgSize column not present in this dataset.")
 print()
 
-# Q4: How many respondents had < 1 year of coding experience outside their job?
+# Q4: How many respondents had less than a year of coding experience outside their job?
 print("Q4: Respondents with <1 year of non-professional coding experience")
 if "NonProfessionalYears" in df_raw.columns:
     mask = df_raw["NonProfessionalYears"].notna() & (df_raw["NonProfessionalYears"] < 1.0)
@@ -84,7 +84,7 @@ else:
     print("NonProfessionalYears not available (YearsCode / YearsCodePro missing).")
 print()
 
-# Q5: For people with 1+ non-pro years, what's the average non-professional years?
+# Q5: For people with over 1 non-pro years, what's the average non-professional years?
 print("Q5: Average non-professional years for exact numeric entries (1–50 years)")
 if {"YearsCodeNum", "YearsCodeProNum", "NonProfessionalYears"}.issubset(df_raw.columns):
     def is_plain_number_str(x):
